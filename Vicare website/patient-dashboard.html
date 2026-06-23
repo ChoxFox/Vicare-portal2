@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Dashboard - Vicare</title>
+    <!-- Direct link configuration routing into your assets styles repository folder -->
+    <link rel="stylesheet" href="assets/css/patient-dashboard.css">
+    <!-- Stable globally cached version 6 vector font icon library framework -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <!-- SAGE GREEN SIDEBAR NAVIGATION PANEL -->
+    <div class="sidebar">
+        <div>
+            <div class="logo-header">
+                <!-- Corrected path targets your assets image subfolder repository -->
+                <img src="assets/images/vicare.svg" alt="Vicare Logo" class="logo">
+            </div>
+
+            <div class="menu">
+                <div class="menu-item active">
+                    <i class="fa-solid fa-gauge"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Notifications</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-comment"></i>
+                    <span>Chats</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <span>Appointments</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-download"></i>
+                    <span>Download Prescription</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Master system exit gateway path links straight to root wiper script -->
+        <a href="logout.php" class="logout-btn">Logout</a>
+    </div>
+
+
+
+    <!-- MAIN DISPLAY REGISTRATION PANEL DECK BODY SECTION -->
+    <div class="main">
+
+        <!-- STICKY PURPLE TOPBAR WORKSPACE HEADER ROW CONTAINER -->
+        <div class="topbar">
+            <div>
+                <h2 id="welcomeNameDisplay">Hello Patient!</h2>
+                <p style="margin: 3px 0 0 0; opacity: 0.85; font-size: 13px;">Welcome back to your dashboard</p>
+            </div>
+
+            <button class="btn" id="bookAppointmentBtn">Book Appointment ▼</button>
+
+            <div class="top-icons">
+                <div class="profile"
+                    style="width: 55px; height: 55px; border-radius: 50%; overflow: hidden; border: 3px solid white;">
+                    <!-- Base fallback avatar graphic placeholder handles missing images natively -->
+                    <img id="profileImageDisplay" src="assets/images/149071.png" alt="Profile Picture"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPONENT MASTER DASHBOARD VERTICAL STACK CONTAINER GRID -->
+        <div class="dashboard-container">
+
+            <!-- ROW BLOCK 1: MEDICAL TELEMETRY VITALS & SEARCH DIRECTORIES -->
+            <div class="vitals-row">
+
+                <!-- CARD A: TRIPLE-STATE VITALS SIGNS INTERACTIVE TRACKER CARD -->
+                <div class="card" id="vital-card">
+                    <h3>VITAL SIGNS</h3>
+                    <div id="vitalsNoticeBlock" style="margin: 15px 0; text-align: center;">
+                        <p class="notice-text" id="noticeText"
+                            style="color: #45546b; font-weight: 600; font-style: italic; margin: 0;">
+                            Loading vital signs status...
+                        </p>
+                        <div id="vitalsActions"
+                            style="display: none; gap: 10px; justify-content: center; margin-top: 15px; width: 100%;">
+                            <button type="button" class="btn" id="acceptVitalsBtn"
+                                style="width: auto; padding: 10px 20px; background: #00a63e; margin: 0; color: white; border: none; font-weight: bold; border-radius: 6px; cursor: pointer;">Update
+                                Vitals</button>
+                            <button type="button" class="btn" id="rejectVitalsBtn"
+                                style="width: auto; padding: 10px 20px; background: #ff5757; margin: 0; color: white; border: none; font-weight: bold; border-radius: 6px; cursor: pointer;">Not
+                                My Vitals</button>
+                        </div>
+                    </div>
+
+                    <div class="vital-grid" id="vitalGridData" style="display: none;">
+                        <div class="vital-box">
+                            <p>Blood Pressure</p>
+                            <div class="value bp" id="bp_val">N/A</div>
+                            <div class="unit">mmHg</div>
+                        </div>
+                        <div class="vital-box">
+                            <p>Heart Rate</p>
+                            <div class="value hr" id="hr_val">N/A</div>
+                            <div class="unit">BPM</div>
+                        </div>
+                        <div class="vital-box">
+                            <p>Respiration</p>
+                            <div class="value resp" id="resp_val">N/A</div>
+                            <div class="unit">RPM</div>
+                        </div>
+                        <div class="vital-box">
+                            <p>Temperature</p>
+                            <div class="value temp" id="temp_val">N/A</div>
+                            <div class="unit">°C</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- CARD B: SCROLLING ACTIVE ONLINE PRACTITIONERS TRAY DIRECTORY CARD -->
+                <div class="chat-card">
+                    <div class="card-header">
+                        <h2>Doctors</h2>
+                        <div class="search-bar">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="doctorSearchInput" placeholder="search for doctors" class="input">
+                        </div>
+                    </div>
+                    <div id="activeDoctorsScrollingTray"
+                        style="display: flex; flex-direction: column; gap: 12px; max-height: 220px; overflow-y: auto; padding-right: 5px; margin-top: 10px;">
+                        <p style="color: #64748b; font-style: italic; font-size: 13px; text-align: center;">Looking up
+                            active practitioners...</p>
+                    </div>
+                </div>
+
+            </div> <!-- Closes vitals-row container structure block -->
+
+            <!-- ROW BLOCK 2: CALENDAR SCHEDULING LISTS & MEDICAL PRESCRIPTIONS DOWNLOAD MATRIX -->
+            <div class="records-row">
+
+                <!-- CARD C: REAL-TIME APPOINTMENTS VERTICAL LIST SCROLL TRAY CONTAINER -->
+                <div class="card appointment-card">
+                    <h3>My Appointments</h3>
+                    <div id="patientAppointmentsContainer"
+                        style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
+                        <p
+                            style="color: #45546b; font-style: italic; font-size: 13px; text-align: center; font-weight: 600;">
+                            Loading booking records...</p>
+                    </div>
+                </div>
+
+                <!-- CARD D: ADVANCED THREE-STATE PRESCRIPTION DOWNLOAD HUB CARD -->
+                <div class="card prescription-card">
+                    <h2>Prescriptions</h2>
+
+                    <div id="prescriptionNoticeBlock" style="text-align: center; margin-top: 15px;">
+                        <p id="prescriptionNoticeText"
+                            style="color: #45546b; font-weight: 600; font-style: italic; line-height: 1.5; font-size: 14px; margin: 0; text-transform: lowercase;">
+                            wait for your practicioner to send your prescription
+                        </p>
+                    </div>
+
+                    <div id="prescriptionDiagnosisBox" class="prescription-box"
+                        style="display: none; margin-top: 15px; background: #dbe9fe; padding: 15px; border-radius: 10px; text-align: left;">
+                        <p
+                            style="font-size: 11px; font-weight: bold; color: #45546b; text-transform: uppercase; margin-bottom: 5px;">
+                            Doctor's Diagnosis Note:</p>
+                        <p id="prescriptionDiagnosisText"
+                            style="color: #1f2937; font-style: italic; line-height: 1.4; font-size: 14px; margin: 0;">No
+                            notes provided.</p>
+                    </div>
+
+
+
+                    <!-- Interactive Button Row Frame Fully Restored Flawlessly -->
+                    <div
+                        style="display: flex; gap: 15px; justify-content: center; align-items: center; margin-top: 20px; width: 100%;">
+                        <a href="#" id="downloadPrescriptionBtn" target="_blank"
+                            style="display: none; background: #0066ff; height: 45px; width: 200px; text-align: center; padding-top: 12px; text-decoration: none; color: #f5f5f5; border-radius: 6px; font-weight: bold; box-sizing: border-box; margin: 0; transition: background 0.2s;">
+                            <i class="fa-solid fa-file-pdf" style="margin-right: 8px; color: white;"></i> Download PDF
+                        </a>
+
+                        <button id="okPrescriptionBtn" class="btn"
+                            style="display: none; background: #00a63e; width: 100px; height: 45px; border: none; font-weight: bold; color: white; border-radius: 6px; cursor: pointer;">OK</button>
+                    </div>
+
+                    <div id="prevPrescriptionLinkWrapper"
+                        style="display: none; margin-top: 15px; border-top: 1px dashed #cbd5e1; padding-top: 10px; text-align: center;">
+                        <a id="downloadPreviousPrescriptionBtn" href="#"
+                            style="color: #0066ff; font-size: 13px; font-weight: bold; text-decoration: none;"><i
+                                class="fa-solid fa-file-pdf" style="margin-right: 5px;"></i>download previous file
+                            here</a>
+                    </div>
+                </div>
+
+                <!-- CARD E: INDEPENDENT HOURLY INSIGHT HEALTH CARD -->
+                <div class="card health-tip">
+                    <h3>Daily Insight</h3>
+                    <div class="insight-box">
+                        <p>"BP is two numbers: systolic pressure over diastolic pressure. Normal blood pressure is
+                            usually around 120/80."</p>
+                    </div>
+                </div>
+
+            </div> <!-- Closes records-row container structure block -->
+        </div> <!-- Closes dashboard-container vertical stack block -->
+    </div> <!-- Closes main display container workspace body section panel -->
+
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE BOOKING MODAL OVERLAY INGESTION SLOT CHANNEL                  -->
+    <!-- ========================================================================= -->
+    <div id="appointmentModalOverlay"
+        style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 5000; justify-content: center; align-items: center; backdrop-filter: blur(8px);">
+        <div
+            style="background: #ffffff; width: 450px; padding: 25px; border-radius: 16px; box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3); position: relative; margin: 0 15px; text-align: left; box-sizing: border-box;">
+            <i class="fa-solid fa-circle-xmark" id="closeBookingModalBtn"
+                style="position: absolute; top: 16px; right: 16px; font-size: 22px; color: #64748b; cursor: pointer;"></i>
+            <h2
+                style="color: #3f4ea1; border-bottom: 2px dashed #3f4ea1; padding-bottom: 10px; font-size: 18px; margin-top: 0; font-weight: bold; text-transform: uppercase;">
+                <i class="fa-solid fa-calendar-check" style="margin-right: 8px;"></i>Book a Consultation</h2>
+            <form id="appointmentBookingForm" style="margin-top: 15px; width: 100%;">
+                <div style="margin-bottom: 15px; width: 100%;"><label
+                        style="display: block; margin-bottom: 6px; font-weight: bold; font-size: 13px; color: #475569;">Select
+                        Medical Practitioner</label><select id="bookDoctorSelect" name="doctor_name" required
+                        style="width:100%; padding:12px; border-radius:8px; border:1px solid #cbd5e1; outline:none; background:#f8fafc; font-size:14px; color:#1e293b; box-sizing: border-box;"></select>
+                </div>
+                <div style="margin-bottom: 20px; display: flex; gap: 10px; width: 100%;">
+                    <div style="flex: 1; min-width: 0;"><label
+                            style="display: block; margin-bottom: 6px; font-weight: bold; font-size: 13px; color: #475569;">Choose
+                            Date</label><input type="date" id="bookDateInput" name="appointment_date" required
+                            style="width:100%; padding:12px; border-radius:8px; border:1px solid #cbd5e1; outline:none; font-size:14px; color:#1e293b; box-sizing: border-box;">
+                    </div>
+                    <div style="flex: 1; min-width: 0;"><label
+                            style="display: block; margin-bottom: 6px; font-weight: bold; font-size: 13px; color: #475569;">Choose
+                            Time Slot</label><input type="time" id="bookTimeInput" name="appointment_time" required
+                            style="width:100%; padding:12px; border-radius:8px; border:1px solid #cbd5e1; outline:none; font-size:14px; color:#1e293b; box-sizing: border-box;">
+                    </div>
+                </div>
+                <button type="submit"
+                    style="width: 100%; background: #3f4ea1; color: white; padding: 14px; border-radius: 8px; border: none; font-weight: bold; font-size: 15px; cursor: pointer; transition: background 0.2s ease; box-sizing: border-box; margin: 0;">Submit
+                    Consultation Request</button>
+            </form>
+        </div>
+    </div>
+
+<!-- ========================================================================= -->
+<!-- 1. CHOSEN TEMPLATE LAYER: INTERACTIVE TELEHEALTH PROFILE POPUP OVERLAY MODAL -->
+<!-- ========================================================================= -->
+<div id="doctorTelehealthModalOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(6px); font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;">
+    <div style="background: #ffffff; width: 400px; padding: 30px; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); text-align: center; box-sizing: border-box; position: relative;">
+        <i class="fa-solid fa-circle-xmark" id="closeTelehealthModalBtn" style="position: absolute; top: 15px; right: 15px; font-size: 22px; color: #94a3b8; cursor: pointer;"></i>
+        <div style="width: 110px; height: 110px; border-radius: 50%; overflow: hidden; margin: 10px auto 15px auto; border: 4px solid #3f4ea1; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"><img id="pop_doc_image" src="assets/images/149071.png" style="width: 100%; height: 100%; object-fit: cover;"></div>
+        <h2 id="pop_doc_name" style="color: #1e293b; font-size: 20px; margin: 0 0 4px 0; font-weight: bold;">Dr. Practitioner</h2>
+        <p id="pop_doc_specialty" style="color: #64748b; font-size: 14px; margin: 0 0 15px 0; font-weight: 500; font-style: italic;">General Consultant</p>
+        <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 20px 0;">
+        <p style="font-size: 12px; font-weight: bold; color: #475569; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 0.5px;">Initiate Consultation Channels</p>
+        <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 10px;">
+            <div onclick="triggerTelehealthAction('video')" style="width: 55px; height: 55px; background: #3f4ea1; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(63,78,161,0.3);"><i class="fa-solid fa-video"></i></div>
+            <div onclick="triggerTelehealthAction('text')" style="width: 55px; height: 55px; background: #00a63e; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,166,62,0.3);"><i class="fa-solid fa-comments"></i></div>
+            <div onclick="triggerTelehealthAction('voice')" style="width: 55px; height: 55px; background: #0066ff; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,102,255,0.3);"><i class="fa-solid fa-phone"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- 2. DESIGN-MATCHED PATIENT SUITE: COMPACT LIVE TEXT CHAT MODAL OVERLAY -->
+<!-- ========================================================================= -->
+<div id="telehealthChatOverlayModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.4); z-index: 2500; justify-content: center; align-items: center; backdrop-filter: blur(4px); font-family: -apple-system, BlinkMacSystemFont, Arial, sans-serif;">
+    <div style="background: #ffffff; width: 500px; height: 640px; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid #e2e8f0;">
+        <span id="closeChatModalBtn" style="position: absolute; right: 20px; top: 22px; cursor: pointer; font-size: 22px; color: #94a3b8; z-index: 100;"><i class="fa-solid fa-circle-xmark"></i></span>
+        
+        <!-- COMPACT HEADER PANEL -->
+        <div style="padding: 20px 25px; background: #ffffff; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; gap: 12px;">
+            <div id="chatPartnerAvatarWrapper" style="width: 42px; height: 42px; background: #3f4ea1; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #ffffff; font-weight: bold; font-size: 14px; text-transform: uppercase;">
+                <span id="chatPartnerInitialsLabel">CF</span>
+            </div>
+            <div>
+                <h3 id="activeChatPartnerNameLabel" style="margin: 0; font-size: 16px; font-weight: bold; color: #1e293b;"></h3>
+                <div style="display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                    <div id="activeRecipientStatusDot" style="width: 7px; height: 7px; background: #22c55e; border-radius: 50%;"></div>
+                    <span style="font-size: 11px; color: #22c55e; font-weight: 500;"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DIALOGUE MSG STREAMING AREA -->
+        <div id="chatConversationLogTray" style="flex: 1; overflow-y: auto; padding: 25px; background: #dbe9fe; display: flex; flex-direction: column; gap: 14px;"></div>
+
+        <!-- INPUT MESSAGING COMPOSER FORM DOCK -->
+        <form id="chatMessageComposerForm" style="padding: 15px 25px; background: #ffffff; border-top: 1px solid #f1f5f9; display: flex; gap: 12px; align-items: center; width: 100%; box-sizing: border-box;">
+            <input type="hidden" id="chatTargetRecipientInput" name="recipient" value="">
+            <input type="text" id="chatMessageTextInput" name="message" placeholder="Type a message..." autocomplete="off" disabled style="flex: 1; padding: 12px 18px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; color: #1e293b; outline: none; background: #ffffff;">
+            <button type="submit" id="dispatchChatMessageBtn" disabled style="background: #3f4ea1; color: #ffffff; border: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 13px; white-space: nowrap; box-shadow: 0 4px 10px rgba(63,78,161,0.2);">Send</button>
+        </form>
+    </div>
+</div>
+
+<!-- COMPACT AUDIO/VIDEO SIGNAL RUNNING OVERLAY PANEL -->
+<div id="telehealthActiveCallOverlayModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.75); z-index: 3000; justify-content: center; align-items: center; backdrop-filter: blur(4px);">
+    <div style="background: #1e293b; width: 400px; padding: 35px; border-radius: 16px; text-align: center; color: white; box-shadow: 0 20px 40px rgba(0,0,0,0.25);">
+        <h3 id="activeCallTypeLabel" style="margin: 0; color: #3dfed8; text-transform: uppercase; font-size: 11px; letter-spacing: 1px;">Line Active</h3>
+        <h2 id="activeCallPartnerNameLabel" style="margin: 12px 0 5px 0; font-size: 22px; font-weight: bold;">Dr. Practitioner</h2>
+        <p id="activeCallTimerDisplay" style="margin: 0 0 25px 0; color: #94a3b8; font-family: monospace; font-size: 15px;">00:00</p>
+        <div style="width: 75px; height: 75px; background: rgba(255,255,255,0.05); border-radius: 50%; margin: 0 auto 30px auto; display: flex; justify-content: center; align-items: center; border: 2px dashed #3dfed8;"><i id="activeCallLogoIcon" class="fa-solid fa-phone" style="font-size: 24px; color: #3dfed8;"></i></div>
+        <button type="button" id="terminateActiveCallBtn" style="background: #ff5757; color: white; border: none; padding: 12px 35px; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 13px; width: 100%;">Disconnect Call</button>
+    </div>
+</div>
+
+
+
+
+    <!-- Connected external non-blocking script sheet engines inside assets js subfolder -->
+    <script src="assets/js/patient-core.js"></script>
+    <script src="assets/js/patient-vitals.js"></script>
+    <script src="assets/js/patient-prescriptions.js"></script>
+    <script src="assets/js/telehealth-chat.js?v=1.0"></script>
+    
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+/* ========================================================================= */
+/* VICARE PRACTITIONER CLINICAL HUB - MASTER GRAPHICS ENGINE STYLES (HALF 1)  */
+/* ========================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #cbd5e1; /* Deep slate background tone matching your picture shadow depth */
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   2. ORIGINAL SIDEBAR NAVIGATION PANEL 
+   ========================================== */
+.sidebar {
+    width: 280px;
+    background: #9dbebe; /* Exact sage grey canvas color from your reference image */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex-shrink: 0;
+}
+
+.logo-header {
+    height: 87px;
+    background: #3f4ea1; /* Matches the header bar perfectly */
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.menu {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #1e293b;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(5px);
+}
+
+.menu-item.active {
+    background: #3f4ea1; /* Deep violet menu highlight */
+    color: white;
+}
+
+.menu-item i {
+    color: #cbd5e1;
+    font-size: 18px;
+}
+
+.menu-item.active i {
+    color: white;
+}
+
+.logout-btn {
+    background: #4a00e0; /* Deep violet logout anchor */
+    color: white;
+    border: none;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #3a00b0;
+}
+
+/* ==========================================
+   3. ORIGINAL TOPBAR HEADER BAR REFERENCE 
+   ========================================== */
+.main {
+    flex: 1;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 40px;
+    min-width: 0;
+    background: #cbd5e1;
+}
+
+.topbar {
+     background: #3f4ea1;
+     display: flex;
+     padding: 25px;
+     height: 87px;
+     justify-content: space-between;
+     align-items: center;
+     color: white;
+     margin-bottom: 5px; /* Clean top vertical tracking margin setup */
+    
+}
+
+.topbar h2 {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+
+/* ==========================================
+   4. COMPONENT GRID & CARD LAYOUT PANELS 
+   ========================================== */
+.grid {
+    display: flex; 
+    gap: 25px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.column-left, .column-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    min-width: 0;
+}
+
+.card {
+    background: #9dbebe; /* Matches the original sage grey background card tone perfectly */
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card h2, .card h3 {
+    margin-bottom: 20px;
+    color: #0f172a;
+    font-weight: bold;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+}
+
+/* ==========================================
+   5. INPUT FIELDS & TEXT CELL FORMATTING 
+   ========================================== */
+.patient-details span, .vital-inputs span, .medicine-box span {
+    margin-bottom: 10px;
+    margin-left: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #1e293b;
+    display: block;
+}
+
+.patient-input, .blood-rate, .resp-temp, .Medicine-dosage, .time {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+/* HIGH-PERFORMANCE UNIFIED FORM INTERACTIVE FIELDS STYLE MATCHING YOUR PICTURE */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    color: #1e293b;
+    background: #e0e7ff; /* Soft, light lavender-blue input canvas color from your screen image */
+    margin-bottom: 15px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]::placeholder, textarea::placeholder {
+    color: #94a3b8; /* Soft muted text descriptors */
+}
+
+input[type="text"]:focus, textarea:focus {
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(63, 78, 161, 0.25);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* ==========================================
+   6. CRISP COLOR-CODED SUBMISSION CONTROLS 
+   ========================================== */
+.btn {
+    display: inline-block;
+    padding: 14px 24px;
+    background: #4a00e0; /* Rich purple shade used for principal actions */
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background: #3a00b0;
+}
+
+/* Specific button styles matching your picture colors */
+.vitals .btn {
+    background: #5b00ff; /* Electric violet color from your 'Send to Patient' button image */
+}
+
+.vitals .btn:hover {
+    background: #4b00e0;
+}
+
+#triggerPreviewBtn {
+    background: #1e1b4b; /* Deep navy tone from your preview button image */
+}
+
+#triggerPreviewBtn:hover {
+    background: #11103c;
+}
+
+.add-btn {
+    background: #475569;
+}
+
+.add-btn:hover {
+    background: #334155;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ==========================================
+   7. ADAPTIVE RESPONSIVENESS OVERRIDES 
+   ========================================== */
+@media (max-width: 1150px) {
+    .grid {
+        flex-direction: column; /* Collapses columns vertically into a clean stack on laptops */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        display: none !important; /* Hides horizontal bars gracefully on thin viewports */
+    }
+    .patient-input, .blood-rate, .resp-temp, .Medicine-dosage, .time {
+        flex-direction: column;
+        gap: 0;
+    }
+    .topbar {
+        flex-direction: column;
+        height: auto;
+        gap: 15px;
+        padding: 20px;
+        text-align: center;
+    }
+    #topbarChatTriggerBtn {
+        position: static;
+        transform: none;
+    }
+}

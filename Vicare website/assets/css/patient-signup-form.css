@@ -1,0 +1,329 @@
+/* ========================================================================= */
+/* VICARE REALIGNMENT GRAPHICS ENGINE - PATIENT SIGNUP PRODUCTION STYLES     */
+/* ========================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Prevents parent background scrolling breaks */
+    background: #45546b;
+}
+
+/* ==========================================
+   2. LEFT SIDE - HERO IMAGE & OVERLAY
+   ========================================== */
+.form-bg-img {
+    flex: 0.7;
+    /* CORRECT RE-ROUTE PATH: Looks back one folder and tunnels straight into assets/images/ */
+    background: url('../images/patient-bg-img2.jpg') no-repeat center/cover;
+}
+
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+}
+
+.overlay h1 {
+    color: #f5f5f5;
+    max-width: 500px;
+    font-size: 2rem;
+    line-height: 1.4;
+    animation: cardFloat 3s infinite ease-in-out;
+}
+
+@keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==========================================
+   3. RIGHT SIDE - FORM CONTAINER
+   ========================================== */
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #45546b;
+    padding: 40px 20px;
+    overflow-y: auto; /* Allows scrolling if inputs overflow small screens */
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    animation: navDrop 0.8s ease;
+}
+
+@keyframes navDrop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #f5f5f5;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   4. FORM FIELDS & UX LABELS
+   ========================================== */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.input-container label {
+    color: #f5f5f5;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    color: #1e293b;
+    background: #ffffff;
+}
+
+.input-container input:focus {
+    box-shadow: 0 0 0 3px rgba(61, 254, 216, 0.4); /* Elegant focus ring highlights */
+}
+
+/* ==========================================
+   5. PASSWORD EYE WRAPPER POSITIONING
+   ========================================== */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 45px !important;
+}
+
+.password-wrapper i {
+    position: absolute;
+    right: 15px;
+    color: #64748b; /* Sharpened vector contrast parameters */
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 10;
+    transition: color 0.2s ease;
+}
+
+.password-wrapper i:hover {
+    color: #2f80ed !important;
+}
+
+small {
+    display: block;
+    color: #cbd5e1;
+    margin-top: 6px;
+    font-size: 12px;
+}
+
+/* FILE UPLOAD INPUT STYLE PROPERTIES */
+.input-container input.image {
+    background: #bdd7fd;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.image:hover {
+    background: #2f80ed;
+    color: white;
+}
+
+/* ==========================================
+   6. ACTION BUTTON HOVER MECHANICS
+   ========================================== */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.next {
+    background-color: #000080;
+    color: white;
+}
+
+.next:hover {
+    background: #2f80ed;
+}
+
+.back {
+    background: #bdd7fd;
+    border: 2px solid #000080;
+    color: #000080;
+}
+
+.back:hover {
+    background: #2f80ed;
+    color: white;
+    border-color: transparent;
+}
+
+/* HIGH-CONTRAST SELECTION TRANSITION STYLING FOR TOGGLE LINKS [INDEX] */
+.signup-link {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+.signup-link a {
+    color: #3dfed8; /* FIXED: High-readability accent color matching the home page login [INDEX] */
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.2s ease;
+}
+
+.signup-link a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   7. WIZARD STEP SECTION VISIBILITY ENGINE
+   ========================================== */
+.step-section {
+    display: none; /* Hide panels by default layout paths */
+}
+
+/* Handled smoothly alongside your step transition classes */
+.step-section.active {
+    display: block !important; 
+    width: 100%;
+}
+
+/* SPECIFIC ALIGNMENT FOR THE SUCCESS PROFILE CARD WINDOW TAB OVERLAY [INDEX] */
+#profileStep.active {
+    display: flex !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #45546b;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-card {
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    padding: 40px 30px;
+    text-align: center;
+    animation: bouncePop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bouncePop {
+    from { opacity: 0; transform: scale(0.8) translateY(30px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    border: 4px solid #00008b;
+    background: #f1f5f9;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doctor-name {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.success-text {
+    color: #00008b;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   8. ADAPTIVE RESPONSIVENESS OVERRIDES
+   ========================================== */
+@media(max-width: 900px) {
+    body {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .form-bg-img {
+        display: none !important; /* Hides left layout image completely on small viewports [INDEX] */
+    }
+    .right {
+        width: 100% !important;
+        min-height: 100vh;
+        padding: 30px 15px;
+    }
+    .form-container {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Login - Vicare</title>
+    <!-- Linked cleanly to your responsive assets stylesheet directory folder -->
+    <link rel="stylesheet" href="assets/css/doctor's-log-in-form.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+
+<body>
+
+    <section class="bg-img">
+        <div class="overlay" style="display: flex; align-items: center; justify-content: center; min-height: 100vh; width: 100%;">
+
+            <div class="login-card">
+                <h2>Patient Login</h2>
+                <p>Access your medical records and connect with doctors</p>
+
+                <!-- Dynamic Client-Side Error Alert Box Layer Container -->
+                <div id="loginErrorBanner" style="display: none; background: #ff5757; color: white; padding: 12px; margin-bottom: 20px; border-radius: 10px; font-size: 14px; text-align: center; font-weight: bold; box-shadow: 0 4px 10px rgba(255, 87, 87, 0.25);">
+                    Invalid credentials or account details.
+                </div>
+
+
+
+                                <!-- FIXED FORM PATH: Submits securely to your backend script out at the root level -->
+                <form id="patientLoginForm" action="patient-login.php" method="POST">
+
+                    <!-- Input 1: Contact (Email or Mobile String) -->
+                    <div class="input-group">
+                        <label for="contact">Email or Mobile Number</label>
+                        <input type="text" id="contact" name="contact" placeholder="Enter email or mobile number" required>
+                    </div>
+
+                    <!-- Input 2: Password with Visibility Eye Toggle Key -->
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper" style="position: relative; display: flex; align-items: center; width: 100%;">
+                            <input type="password" id="password" name="password" placeholder="Enter password" required style="padding-right: 45px !important; width: 100%;">
+                            <i class="fa-solid fa-eye" id="toggleLoginPasswordIcon" onclick="togglePatientLoginPassword()" style="position: absolute; right: 15px; color: #64748b; cursor: pointer; font-size: 16px; z-index: 10;"></i>
+                        </div>
+                    </div>
+
+                    <div class="forgot-password">
+                        <a href="#">Forgot Password?</a>
+                    </div>
+
+
+
+                                        <button type="submit" class="login-btn">Login</button>
+
+                    <div class="signup-link" style="margin-top: 20px; text-align: center; font-size: 14px;">
+                        <span>Don't have a patient account?</span> 
+                        <a href="patient-signup-forms.html" style="color: #3dfed8; text-decoration: none; font-weight: bold; margin-left: 5px;">Sign up here</a>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FIXED: Connected securely to your external asset JavaScript module subfolder -->
+    <script src="assets/js/patients-login-form.js"></script>
+</body>
+</html>

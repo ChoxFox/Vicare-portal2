@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Vicare - Home</title>
+
+   <link rel="stylesheet" href="assets/css/index.css">
+</head>
+
+<body>
+   <!-- MAIN BACKGROUND IMAGE CONTAINER LAYOUT -->
+   <div class="hero-bg-image" id="home">
+      <div class="main-overlay">
+
+         <!-- HEADER SECTION PANEL -->
+         <header>
+            <div class="logo">
+               <img src="assets/images/vicare.svg" alt="Vicare Logo">
+            </div>
+
+            <!-- DROPDOWN LOGIN CONTROLLER -->
+            <div class="dropdown" id="dropdown">
+               <button class="login-btn" onclick="toggleDropdown()">
+                  Login ▼
+               </button>
+
+               <!-- Inside index.html dropdown contents container block -->
+               <div class="dropdown-content" id="loginDropdownContent">
+                  <a href="patients-login-form.html">Patient Login</a> <!-- FIXED NAVIGATION TIMING HERE -->
+                  <a href="doctors-login-form.html">Doctor Login</a>
+               </div>
+
+            </div>
+         </header>
+
+         <!-- HERO DESCRIPTION BLOCK -->
+         <section class="hero">
+            <div class="hero-description">
+               <div class="h1">
+                  <h1 class="hero-title">Welcome to <span class="vicare-hero-color">Vicare</span></h1>
+               </div>
+
+               <div class="p">
+                  <p class="hero-text">Your health comes first. Connect with trusted doctors, manage appointments, and
+                     experience healthcare made simple.</p>
+               </div>
+            </div>
+
+            <a href="get-started.html" class="hero-btn">Get Started</a>
+         </section>
+
+      </div> <!-- Closes main-overlay structural layer -->
+   </div> <!-- Closes hero-bg-image main section layer -->
+
+   <!-- Modular interaction script path -->
+   <script src="assets/js/index.js"></script>
+</body>
+
+</html>

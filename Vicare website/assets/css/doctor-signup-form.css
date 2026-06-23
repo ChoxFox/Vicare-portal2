@@ -1,0 +1,302 @@
+/* ========================================================================= */
+/* VICARE REALIGNMENT GRAPHICS ENGINE - DOCTOR SIGNUP PRODUCTION STYLES      */
+/* ========================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; /* Prevents parent background scrolling breaks */
+    background: #45546b;
+}
+
+/* ==========================================
+   2. LEFT SIDE - HERO IMAGE & OVERLAY
+   ========================================== */
+.form-bg-img {
+    flex: 0.7;
+    /* CORRECT RE-ROUTE PATH: Looks back one folder and safely tunnels directly into assets/images/ */
+    background: url('../images/doc-bg-img.jpg') no-repeat center/cover;
+}
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay h1 {
+    color: #f5f5f5;
+    font-size: 2rem;
+    line-height: 1.4;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    animation: cardFloat 4s infinite ease-in-out;
+}
+
+@keyframes cardFloat {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+}
+
+/* ==========================================
+   3. RIGHT SIDE - FORM CONTAINER
+   ========================================== */
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #45546b;
+    padding: 40px 20px;
+    overflow-y: auto; /* Allows scrolling if inputs overflow small screens */
+}
+
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    animation: navDrop 0.8s ease;
+}
+
+@keyframes navDrop {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+h2 {
+    margin-bottom: 25px;
+    color: #f5f5f5;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   4. FORM FIELDS & UX LABELS
+   ========================================== */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.input-container label {
+    color: #f5f5f5;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 0 !important; /* Overriding old internal native margins */
+    border-radius: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    color: #1e293b;
+    background: #ffffff;
+}
+
+input:focus {
+    box-shadow: 0 0 0 3px rgba(61, 254, 216, 0.4); /* Subtle aura focus glow ring when typing */
+}
+
+small {
+    display: block;
+    color: #cbd5e1;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* FILE UPLOAD INPUT STYLE LAYER */
+.input-container input.image {
+    background: #bdd7fd;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.image:hover {
+    background: #2f80ed;
+    color: white;
+}
+
+/* ==========================================
+   5. PASSWORD EYE WRAPPER POSITIONING
+   ========================================== */
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 45px !important;
+}
+
+/* ==========================================
+   6. ACTION BUTTONS
+   ========================================== */
+.btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.next {
+    background-color: #000080;
+    color: white;
+}
+
+.next:hover {
+    background: #2f80ed;
+}
+
+.back {
+    background: #bdd7fd;
+    border: 2px solid #000080;
+    color: #000080;
+}
+
+.back:hover {
+    background: #2f80ed;
+    color: white;
+    border-color: transparent;
+}
+
+/* ADDED FIXED UX TRACK STYLING FOR SIGNUP LINKS */
+.signup-link {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #e2e8f0;
+}
+
+.signup-link a {
+    color: #3dfed8;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+    transition: color 0.2s ease;
+}
+
+.signup-link a:hover {
+    color: #2f80ed;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   7. WIZARD STEP SECTION VISIBILITY ENGINE
+   ========================================== */
+.step-section {
+    display: none; /* Hide steps dynamically by default layout paths */
+}
+
+.step-section.active {
+    display: block !important; /* Force displays current paginated index panel module */
+    width: 100%;
+    animation: fadeStep 0.4s ease-out;
+}
+
+@keyframes fadeStep {
+    from { opacity: 0; transform: translateX(15px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 400px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    padding: 40px 30px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+    border: 4px solid #00008b;
+    background: #f1f5f9;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.doctor-name {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.success-text {
+    color: #00008b;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   8. RESPONSIVE DESIGN BREAKPOINTS
+   ========================================== */
+@media(max-width: 900px) {
+    body {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+    .form-bg-img {
+        display: none !important; /* Hides left layout branding panel completely on small monitors */
+    }
+    .right {
+        width: 100% !important;
+        min-height: 100vh;
+        padding: 30px 15px;
+    }
+    .form-container {
+        max-width: 100%;
+    }
+}

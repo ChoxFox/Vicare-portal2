@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign up - Vicare</title>
+    <!-- Clean, direct path configuration routing into your assets styles repository folder -->
+    <link rel="stylesheet" href="assets/css/doctor-signup-form.css">
+    <!-- Stable, universally cached version 6 CDN ensuring your icons display beautifully on any connection -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- LEFT STACK COLUMN: BRANDING AND VALUE PROPOSITION LOGO TEXT -->
+    <div class="form-bg-img" id="heroBg">
+        <div class="overlay">
+            <h1>Sign up to manage patients, appointments, and provide healthcare services.</h1>
+        </div>
+    </div>
+
+    <!-- RIGHT STACK COLUMN: MULTI-STEP INPUT PROCESSING GRID -->
+    <div class="right" id="rightSection">
+        <div class="form-container">
+
+            <!-- MAIN SINGLE FORM WRAPPER (FIXED PATH: Submits relative to your fresh root directory) -->
+            <form id="doctorSignupForm" action="doctors-signup.php" method="POST" enctype="multipart/form-data">
+
+                <!-- STEP 1 VIEWPORT PANEL (Active Baseline View) -->
+                <div class="step-section active" id="step1">
+                    <h2>Sign up</h2>
+
+                    <!-- 1. First Name -->
+                    <div class="input-container">
+                        <label for="firstName">First Name</label>
+                        <input type="text" placeholder="Enter your first name" id="firstName" name="first_name" required>
+                    </div>
+
+                    <!-- 2. Last Name -->
+                    <div class="input-container">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" placeholder="Enter your last name" id="lastName" name="last_name" required>
+                    </div>
+
+                    <!-- 3. Combined Contact Info -->
+                    <div class="input-container">
+                        <label for="contact">Mobile Number or Email</label>
+                        <input type="text" placeholder="Enter mobile number or email" id="contact" name="contact" required>
+                    </div>
+
+                    <button type="button" class="btn next" onclick="goToStep2()">Next</button>
+                </div>
+
+                <!-- STEP 2 VIEWPORT PANEL (Hidden by default, triggered via pagination) -->
+                <div class="step-section" id="step2">
+                    <h2>Sign up</h2>
+
+                    <!-- 4. License Number -->
+                    <div class="input-container">
+                        <label for="license">Medical License Number</label>
+                        <input type="text" placeholder="Enter license number" id="license" name="license" required>
+                    </div>
+
+                    <!-- 5. Password with Visibility Toggle Eye -->
+                    <div class="input-container">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper" style="position: relative; display: flex; align-items: center; width: 100%;">
+                            <input type="password" placeholder="Create a password" id="password" name="password" required style="width: 100%; padding-right: 45px !important;">
+                            <i class="fa-solid fa-eye" id="togglePasswordIcon" onclick="togglePasswordVisibility()" style="position: absolute; right: 15px; cursor: pointer; color: #64748b; z-index: 10;"></i>
+                        </div>
+                        <small style="color: #64748b; font-size: 11px; display: block; margin-top: 4px;">Must be at least 8 characters.</small>
+                    </div>
+
+                    <!-- 6. Profile Picture Upload -->
+                    <div class="input-container">
+                        <label for="imageInput" class="upload-title">Upload Profile Picture (optional)</label>
+                        <input type="file" id="imageInput" accept="image/*" class="image" name="profile_pic">
+                    </div>
+
+                    <!-- Navigation Action Controls Grid Row -->
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; width: 100%;">
+                        <button type="submit" class="btn next" style="margin: 0; width: 100%;">Create account</button>
+                        <button type="button" class="btn back" onclick="goToStep1()" style="margin: 0; width: 100%;">Back</button>
+                    </div>
+                </div>
+
+            </form>
+
+            <!-- PROFILE SUCCESS INSTANT ACKNOWLEDGEMENT LAYER CARD MODAL -->
+            <div class="step-section" id="profileStep">
+                <div class="profile-wrapper">
+                    <div class="profile-card">
+                        <div class="success-text" style="color: #00a63e; font-weight: bold; margin-bottom: 15px;"><i class="fa-solid fa-circle-check" style="margin-right: 6px;"></i>Account created</div>
+                        <div class="profile-image" style="width: 120px; height: 120px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px; border: 3px solid #3f4ea1;">
+                            <!-- FIXED LOCAL FALLBACK: Uses your secure offline layout icon to avoid browser handshakes timeout crashes -->
+                            <img id="previewImage" src="assets/images/149071.png" alt="Profile Preview" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="doctor-name" id="doctorName" style="font-size: 20px; font-weight: bold; color: #1e293b;">Dr. Name</div>
+                        <button class="btn next" style="margin-top: 25px; width: 100%;" onclick="goToDashboard()">Continue to Dashboard</button>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Closes form-container layout inner block -->
+    </div> <!-- Closes column-right layout section panel -->
+
+    <!-- Controller pagination and dynamic field interaction scripts link paths inside assets folder -->
+    <script src="assets/js/doctor-signup-form.js"></script>
+</body>
+
+</html>
